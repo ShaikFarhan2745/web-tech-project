@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University - Home</title>
+    <style>
+      /* Apple-inspired design system */
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #86868b;
+        --background-color: #ffffff;
+        --text-color: #1d1d1f;
+        --light-gray: #f5f5f7;
+        --border-color: #d2d2d7;
+        --hover-color: #147ce5;
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Header and Navigation */
+      .header {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .header-logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-logo img {
+        height: 24px;
+        margin-right: 8px;
+        background: linear-gradient(45deg, #0071e3, #147ce5);
+        border-radius: 4px;
+        padding: 4px;
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 28px;
+      }
+
+      .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.8;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .header-nav a:hover {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+
+      .header-nav a.active {
+        opacity: 1;
+        color: var(--primary-color);
+        font-weight: 500;
+      }
+
+      /* Hero section */
+      .hero {
+        padding-top: 60px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="300" r="100" fill="url(%23a)"/><circle cx="800" cy="200" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="120" fill="url(%23a)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+        z-index: 1;
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        animation: slideUp 0.8s ease-out;
+        color: white;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        animation: slideUp 0.8s ease-out 0.1s backwards;
+      }
+
+      .button-primary {
+        display: inline-block;
+        background-color: white;
+        color: var(--primary-color);
+        padding: 12px 24px;
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 500;
+        transition: var(--transition);
+        animation: slideUp 0.8s ease-out 0.2s backwards;
+        cursor: pointer;
+      }
+
+      .button-primary:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Section styling */
+      .section {
+        padding: 120px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .section-light {
+        background-color: var(--light-gray);
+      }
+
+      .section-title {
+        font-size: 40px;
+        margin-bottom: 16px;
+        color: inherit;
+      }
+
+      .section-subtitle {
+        font-size: 21px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        max-width: 700px;
+        margin: 0 auto 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* About section styling */
+      .feature-row {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 100px;
+        align-items: center;
+      }
+
+      .feature-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .feature-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .feature-text {
+        flex: 1;
+        text-align: left;
+        padding: 0 20px;
+      }
+
+      .feature-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .feature-description {
+        font-size: 17px;
+        color: var(--secondary-color);
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .feature-image {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        height: 300px;
+        background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary-color);
+        position: relative;
+      }
+
+      .feature-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #0071e3, #147ce5);
+        opacity: 0.1;
+      }
+
+      .feature-image .placeholder-text {
+        font-size: 18px;
+        font-weight: 500;
+        z-index: 1;
+      }
+
+      .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .feature-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-image:hover img {
+        transform: scale(1.03);
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Statistics section */
+      .stats-section {
+        background-color: var(--text-color);
+        color: white;
+        padding: 80px 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Call to action section */
+      .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .cta-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .cta-subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .button-secondary {
+        display: inline-block;
+        background-color: transparent;
+        color: white;
+        padding: 12px 24px;
+        border: 2px solid white;
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .button-secondary:hover {
+        background-color: white;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        .feature-row,
+        .feature-row:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .hero h2 {
+          font-size: 22px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .feature-text {
+          text-align: center;
+          padding: 0;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          padding: 0 16px;
+        }
+
+        .header-nav {
+          gap: 16px;
+        }
+
+        .button-primary {
+          font-size: 14px;
+          padding: 10px 20px;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+
+        .stat-number {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <div
+          style="
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #0071e3, #147ce5);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+          "
+        >
+          A
+        </div>
+        <span style="margin-left: 8px; font-weight: 600">Amity</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="login.html">Sign In</a>
+        <a href="sponsorship.html">Sponsorship</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Excellence in Education</h1>
+        <h2>Discover a world of opportunities at Amity University</h2>
+        <a href="login.html" class="button-primary">Book Events</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">About Amity University</h2>
+        <p class="section-subtitle animate-on-scroll">
+          A premier institution dedicated to innovation, research, and holistic
+          development.
+        </p>
+
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">Educational Excellence</h3>
+            <p class="feature-description">
+              Amity University stands as a beacon of higher education with a
+              commitment to excellence. Established with a vision to provide
+              quality education, Amity has grown to become one of the most
+              prestigious universities globally.
+            </p>
+            <p class="feature-description">
+              Our campus is a hub of innovation, cultural diversity, and
+              academic brilliance. We provide state-of-the-art facilities,
+              world-class faculty, and a dynamic learning environment to nurture
+              future leaders.
+            </p>
+          </div>
+          <div class="feature-image">
+            <div class="placeholder-text">Campus Image</div>
+          </div>
+        </div>
+
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">World-Class Events</h3>
+            <p class="feature-description">
+              Amity University is renowned for its exceptional event
+              organization, bringing together students from various disciplines
+              to create memorable experiences. Our events range from technical
+              exhibitions to cultural extravaganzas.
+            </p>
+            <p class="feature-description">
+              Each year, we organize multiple flagship events including "Amity
+              Youth Fest," "TechnoAmity," "Cultural Vista," and "Sports Fiesta."
+              These events are meticulously planned and executed by dedicated
+              student committees with faculty guidance.
+            </p>
+          </div>
+          <div class="feature-image">
+            <div class="placeholder-text">Event Image</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll" style="color: white">
+          Amity by Numbers
+        </h2>
+        <div class="stats-grid">
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">50,000+</div>
+            <div class="stat-label">Students</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Programs</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Campuses</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Faculty</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title animate-on-scroll">Ready to Join Amity?</h2>
+        <p class="cta-subtitle animate-on-scroll">
+          Take the first step towards your bright future with us
+        </p>
+        <div class="cta-buttons animate-on-scroll">
+          <a href="login.html" class="button-primary">Book Events</a>
+          <a href="#about" class="button-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Show elements when they come into view
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight * 0.85;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Handle smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 60,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Update active navigation
+      function updateActiveNav() {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
+
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop <= 100) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // Event listeners
+      window.addEventListener("scroll", () => {
+        animateOnScroll();
+        updateActiveNav();
+      });
+
+      window.addEventListener("load", () => {
+        animateOnScroll();
+        updateActiveNav();
+      });
+
+      // Initialize animations on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(animateOnScroll, 100);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invoice with Nested Table</title>
+  </head>
+  <body>
+    <h2>Invoice with Nested Table</h2>
+    <table border="1">
+      <tr>
+        <th colspan="3">Coustomer Name : John Doe</th>
+      </tr>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>price</th>
+      </tr>
+      <tr>
+        <td>Laptop</td>
+        <td>1</td>
+        <td>$1200</td>
+      </tr>
+      <tr>
+        <td>Mouse</td>
+        <td>1</td>
+        <td>$25</td>
+      </tr>
+      <tr>
+        <td colspan="2">Subtotal</td>
+        <td>$1225</td>
+      </tr>
+      <tr>
+        <td colspan="3">Taxes & Discounts
+        <table border="1" width="100%">
+          <tr>
+            <th>tax Type</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>GST(5%)</td>
+            <td>$61.25</td>
+          </tr>
+          <tr>
+            <td>Discounts</td>
+            <td>$30.00</td>
+          </tr>
+        </table>
+        </td>
+        <tr>
+            <td colspan="2">Total Price</td>
+            <td>$1256.25</td>
+        </tr>
+      </tr>
+    </table>
+  </body>
+</html>

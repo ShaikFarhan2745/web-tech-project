@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University - Excellence in Education</title>
+    <style>
+      /* Apple-inspired design system */
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #86868b;
+        --background-color: #ffffff;
+        --text-color: #1d1d1f;
+        --light-gray: #f5f5f7;
+        --border-color: #d2d2d7;
+        --hover-color: #147ce5;
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Header and Navigation */
+      .header {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .header-logo {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-color);
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 28px;
+      }
+
+      .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.8;
+        transition: var(--transition);
+      }
+
+      .header-nav a:hover {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+
+      /* Hero section */
+      .hero {
+        padding-top: 60px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, var(--light-gray) 0%, #e8f4fd 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        animation: slideUp 0.8s ease-out;
+        background: linear-gradient(
+          135deg,
+          var(--text-color) 0%,
+          var(--primary-color) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        margin-bottom: 30px;
+        animation: slideUp 0.8s ease-out 0.1s backwards;
+      }
+
+      .button-primary {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 400;
+        transition: var(--transition);
+        animation: slideUp 0.8s ease-out 0.2s backwards;
+        margin-right: 15px;
+      }
+
+      .button-primary:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+      }
+
+      .button-secondary {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--primary-color);
+        padding: 12px 24px;
+        border: 2px solid var(--primary-color);
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 400;
+        transition: var(--transition);
+        animation: slideUp 0.8s ease-out 0.3s backwards;
+      }
+
+      .button-secondary:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Stats section */
+      .stats-section {
+        padding: 120px 0;
+        background-color: var(--text-color);
+        color: white;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .stat-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* About section */
+      .about-section {
+        padding: 120px 0;
+        background-color: var(--light-gray);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: 40px;
+        margin-bottom: 16px;
+        color: var(--text-color);
+      }
+
+      .section-subtitle {
+        font-size: 21px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .feature-card {
+        background-color: white;
+        border-radius: 18px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .feature-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .feature-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .feature-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: var(--text-color);
+      }
+
+      .feature-description {
+        font-size: 16px;
+        color: var(--secondary-color);
+        line-height: 1.6;
+      }
+
+      /* Campus showcase */
+      .campus-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-top: 40px;
+      }
+
+      .campus-image {
+        height: 400px;
+        overflow: hidden;
+      }
+
+      .campus-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .campus-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Quick links section */
+      .quick-links {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .link-card {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--hover-color) 100%
+        );
+        color: white;
+        padding: 40px 30px;
+        border-radius: 18px;
+        text-decoration: none;
+        transition: var(--transition);
+        display: block;
+        text-align: center;
+      }
+
+      .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .link-card h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .link-card p {
+        opacity: 0.9;
+        font-size: 14px;
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--text-color);
+        color: white;
+        padding: 60px 0 30px;
+        text-align: center;
+      }
+
+      .footer p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 10px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .hero h2 {
+          font-size: 22px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .campus-showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .campus-image {
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          padding: 0 16px;
+        }
+
+        .header-nav {
+          gap: 16px;
+        }
+
+        .button-primary,
+        .button-secondary {
+          font-size: 14px;
+          padding: 10px 20px;
+          display: block;
+          margin: 10px auto;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
+
+        .stat-number {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <span>🎓 Amity University</span>
+      </div>
+      <nav class="header-nav">
+        <a href="homee.html">Home</a>
+        <a href="aboutus.html">About</a>
+        <a href="event.html">Events</a>
+        <a href="loginpage.html">Sign In</a>
+        <a href="sponsership.html">Sponsorship</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Excellence in Education</h1>
+        <h2>Discover a world of opportunities at Amity University</h2>
+        <div>
+          <a href="event.html" class="button-primary">Explore Events</a>
+          <a href="aboutus.html" class="button-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Amity by Numbers -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number" data-target="150000">0</span>
+          <span class="stat-label">Students Worldwide</span>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number" data-target="50">0</span>
+          <span class="stat-label">Programs Offered</span>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number" data-target="25">0</span>
+          <span class="stat-label">Years of Excellence</span>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number" data-target="95">0</span>
+          <span class="stat-label">% Placement Rate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title">Why Choose Amity?</h2>
+          <p class="section-subtitle">
+            A premier institution dedicated to innovation, research, and
+            holistic development
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">🎯</span>
+            <h3 class="feature-title">World-Class Education</h3>
+            <p class="feature-description">
+              Internationally recognized programs with industry-relevant
+              curriculum designed to prepare students for global careers.
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">🔬</span>
+            <h3 class="feature-title">Research Excellence</h3>
+            <p class="feature-description">
+              State-of-the-art research facilities and innovation labs fostering
+              breakthrough discoveries and patents.
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">🌍</span>
+            <h3 class="feature-title">Global Network</h3>
+            <p class="feature-description">
+              Strong international partnerships and exchange programs with
+              universities across 6 continents.
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">💼</span>
+            <h3 class="feature-title">Industry Connect</h3>
+            <p class="feature-description">
+              Strong ties with Fortune 500 companies ensuring excellent
+              placement opportunities and internships.
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">🏆</span>
+            <h3 class="feature-title">Award-Winning Faculty</h3>
+            <p class="feature-description">
+              Renowned educators and industry experts committed to nurturing the
+              next generation of leaders.
+            </p>
+          </div>
+
+          <div class="feature-card animate-on-scroll">
+            <span class="feature-icon">🌟</span>
+            <h3 class="feature-title">Vibrant Campus Life</h3>
+            <p class="feature-description">
+              Rich cultural diversity with 100+ student clubs, sports
+              facilities, and year-round events.
+            </p>
+          </div>
+        </div>
+
+        <!-- Campus Showcase -->
+        <div class="campus-showcase animate-on-scroll">
+          <div class="campus-image">
+            <img
+              src="amity university outdoor photo.jpg"
+              alt="Modern Campus Building"
+            />
+          </div>
+          <div class="campus-image">
+            <img
+              src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800"
+              alt="Students on Campus"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title">Get Started</h2>
+          <p class="section-subtitle">
+            Everything you need to begin your journey with Amity University
+          </p>
+        </div>
+
+        <div class="links-grid">
+          <a href="signin.html" class="link-card animate-on-scroll">
+            <h3>Student Portal</h3>
+            <p>Access your dashboard, grades, and university services</p>
+          </a>
+
+          <a href="event.html" class="link-card animate-on-scroll">
+            <h3>Upcoming Events</h3>
+            <p>Join exciting workshops, fests, and networking opportunities</p>
+          </a>
+
+          <a href="aboutus.html" class="link-card animate-on-scroll">
+            <h3>About Amity</h3>
+            <p>Learn more about our history, mission, and achievements</p>
+          </a>
+
+          <a href="sponsership.html" class="link-card animate-on-scroll">
+            <h3>Partner With Us</h3>
+            <p>Explore sponsorship and collaboration opportunities</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Amity University. All rights reserved.</p>
+        <p>
+          Excellence in Education • Innovation in Research • Global in Outlook
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Animate elements on scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight * 0.85;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Counter animation for stats
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute("data-target"));
+          const increment = target / 50;
+          let current = 0;
+
+          const updateCounter = () => {
+            if (current < target) {
+              current += increment;
+              counter.textContent = Math.floor(current).toLocaleString();
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target.toLocaleString();
+            }
+          };
+
+          // Start animation when element is visible
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                updateCounter();
+                observer.unobserve(entry.target);
+              }
+            });
+          });
+
+          observer.observe(counter);
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Initialize animations
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", () => {
+        animateOnScroll();
+        animateCounters();
+      });
+    </script>
+  </body>
+</html>

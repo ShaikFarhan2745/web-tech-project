@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University Event Booking</title>
+    <style>
+      /* Base styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #6200ee;
+        color: white;
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.8s ease-out;
+      }
+
+      .navbar-logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-logo img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .navbar-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .navbar-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-links a:hover {
+        color: #ffcc80;
+      }
+
+      /* Hero section with banner */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        color: white;
+        padding: 0 20px;
+        margin-top: 60px;
+      }
+
+      .hero::before {
+        content: "";
+        background-image: url("images/banner.jpg");
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.7;
+        z-index: -1;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      .hero::after {
+        content: "";
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: slideUp 1s ease-out;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin-bottom: 30px;
+        animation: slideUp 1s ease-out 0.2s;
+        animation-fill-mode: both;
+      }
+
+      .hero-btn {
+        display: inline-block;
+        background-color: #6200ee;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        animation: zoomIn 1s ease-out 0.4s;
+        animation-fill-mode: both;
+      }
+
+      .hero-btn:hover {
+        background-color: #3700b3;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* About section */
+      .about {
+        padding: 80px 20px;
+        background-color: white;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+        color: #6200ee;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background-color: #6200ee;
+      }
+
+      .about-content {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 40px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #4a4a4a;
+      }
+
+      .about-text p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        color: #666;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Login section */
+      .login-section {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .login-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .login-container h2 {
+        color: #6200ee;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-group input:focus {
+        border-color: #6200ee;
+        box-shadow: 0 0 0 2px rgba(98, 0, 238, 0.2);
+        outline: none;
+      }
+
+      .error-message {
+        color: #e53935;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .login-btn {
+        background-color: #6200ee;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .login-btn:hover {
+        background-color: #3700b3;
+        transform: translateY(-2px);
+      }
+
+      .login-links {
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      .login-links a {
+        color: #6200ee;
+        text-decoration: none;
+      }
+
+      .login-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Events section */
+      .events-section {
+        padding: 80px 20px;
+        background-color: #f5f5f5;
+        min-height: 100vh;
+        display: none; /* Initially hidden until logged in */
+      }
+
+      .events-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .event-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .event-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .event-image {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .event-content {
+        padding: 20px;
+      }
+
+      .event-title {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .event-info {
+        font-size: 0.9rem;
+        color: #777;
+        margin-bottom: 15px;
+      }
+
+      .event-description {
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .event-btn {
+        display: inline-block;
+        background-color: #6200ee;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .event-btn:hover {
+        background-color: #3700b3;
+      }
+
+      /* Event Details Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 30px;
+        position: relative;
+        animation: zoomIn 0.3s ease-out;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: #777;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .booking-form {
+        margin-top: 30px;
+      }
+
+      .booking-form h3 {
+        margin-bottom: 20px;
+        color: #6200ee;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      /* Animation for elements on scroll */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="banner.jpg" alt="Amity University Logo" />
+        <span>Amity University</span>
+      </div>
+      <div class="navbar-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#login">Login</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <h1>Welcome to Amity University</h1>
+      <p>
+        Discover and participate in the most exciting campus events. From tech
+        talks to cultural festivals, we've got it all!
+      </p>
+      <a href="#login" class="hero-btn">Book Events Now</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2 class="section-title animate-on-scroll">About Amity University</h2>
+      <div class="about-content">
+        <div class="about-text animate-on-scroll">
+          <h3>Leading University in Education Excellence</h3>
+          <p>
+            Amity University stands as a beacon of higher education with a
+            commitment to excellence. Established with a vision to provide
+            quality education, Amity has grown to become one of the most
+            prestigious universities globally.
+          </p>
+          <p>
+            Our campus is a hub of innovation, cultural diversity, and academic
+            brilliance. We provide state-of-the-art facilities, world-class
+            faculty, and a dynamic learning environment to nurture future
+            leaders.
+          </p>
+          <p>
+            The university hosts numerous events throughout the year, including
+            technical symposiums, cultural festivals, research conferences, and
+            sports tournaments. These events provide students with opportunities
+            to showcase their talents, learn from industry experts, and build
+            lasting connections.
+          </p>
+        </div>
+        <div class="about-image animate-on-scroll">
+          <img
+            src="amity university outdoor photo.jpg"
+            alt="Amity University Campus"
+          />
+        </div>
+      </div>
+
+      <div
+        class="about-content"
+        style="margin-top: 50px; flex-direction: row-reverse"
+      >
+        <div class="about-text animate-on-scroll">
+          <h3>Fest Organization Excellence</h3>
+          <p>
+            Amity University is renowned for its exceptional fest organization,
+            bringing together students from various disciplines to create
+            memorable experiences. Our events range from technical exhibitions
+            to cultural extravaganzas.
+          </p>
+          <p>
+            Each year, we organize multiple flagship events including "Amity
+            Youth Fest," "TechnoAmity," "Cultural Vista," and "Sports Fiesta."
+            These events are meticulously planned and executed by dedicated
+            student committees with faculty guidance.
+          </p>
+          <p>
+            Our event booking system allows students, alumni, and guests to
+            easily register for these events, ensuring a seamless experience
+            from registration to participation.
+          </p>
+        </div>
+        <div class="about-image animate-on-scroll">
+          <img src="Event_photo.jpg" alt="Amity University Festival" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section">
+      <div class="login-container animate-on-scroll">
+        <h2>Login to Book Events</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="enrollment">Student Enrollment Number</label>
+            <input
+              type="text"
+              id="enrollment"
+              placeholder="e.g. A123456789012"
+              required
+            />
+            <p id="enrollment-error" class="error-message">
+              Enrollment number must contain the letter 'A' and 10-12 digits
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="your.email@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button type="submit" class="login-btn">Login</button>
+          <div class="login-links">
+            <a href="#">Forgot Password?</a> | <a href="#">Register</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Events Section (Visible after login) -->
+    <section id="events" class="events-section">
+      <div class="events-container">
+        <h2 class="section-title">Upcoming Events</h2>
+
+        <div class="events-grid">
+          <!-- Event 1 -->
+          <div class="event-card">
+            <img
+              src="images/tech_talk.jpg"
+              alt="Tech Talk: AI in 2025"
+              class="event-image"
+            />
+            <div class="event-content">
+              <h3 class="event-title">Tech Talk: AI in 2025</h3>
+              <p class="event-info">April 10 | 10:00 AM | Auditorium A</p>
+              <p class="event-description">
+                Explore the future of Artificial Intelligence with leading
+                industry experts and discover the potential impact on various
+                sectors.
+              </p>
+              <a href="#" class="event-btn" data-event="tech-talk"
+                >View Details</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 2 -->
+          <div class="event-card">
+            <img
+              src="images/cultural_fest.jpg"
+              alt="Cultural Fest"
+              class="event-image"
+            />
+            <div class="event-content">
+              <h3 class="event-title">Annual Cultural Fest</h3>
+              <p class="event-info">April 15-17 | Campus Grounds</p>
+              <p class="event-description">
+                Three days of music, dance, art, and celebration featuring
+                performances from students and professional artists.
+              </p>
+              <a href="#" class="event-btn" data-event="cultural-fest"
+                >View Details</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 3 -->
+          <div class="event-card">
+            <img
+              src="images/workshop.jpg"
+              alt="Design Workshop"
+              class="event-image"
+            />
+            <div class="event-content">
+              <h3 class="event-title">UX Design Workshop</h3>
+              <p class="event-info">April 20 | 2:00 PM | Design Studio</p>
+              <p class="event-description">
+                Hands-on workshop on user experience design principles with
+                industry professionals and practical exercises.
+              </p>
+              <a href="#" class="event-btn" data-event="design-workshop"
+                >View Details</a
+              >
+            </div>
+          </div>
+
+          <!-- Event 4 -->
+          <div class="event-card">
+            <img
+              src="images/hackathon.jpg"
+              alt="Hackathon"
+              class="event-image"
+            />
+            <div class="event-content">
+              <h3 class="event-title">48-Hour Hackathon</h3>
+              <p class="event-info">April 25-27 | Tech Hub</p>
+              <p class="event-description">
+                Put your coding skills to the test in this intensive hackathon
+                with exciting prizes and networking opportunities.
+              </p>
+              <a href="#" class="event-btn" data-event="hackathon"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details Modal -->
+    <div id="event-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+
+        <img id="modal-image" src="" alt="Event Image" class="modal-image" />
+        <h2 id="modal-title"></h2>
+        <p id="modal-date"></p>
+        <p id="modal-location"></p>
+        <p id="modal-description"></p>
+
+        <div class="booking-form">
+          <h3>Book Your Ticket</h3>
+          <form id="booking-form">
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" id="fullname" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required />
+              </div>
+
+              <div class="form-group">
+                <label for="tickets">Number of Tickets</label>
+                <input
+                  type="number"
+                  id="tickets"
+                  min="1"
+                  max="5"
+                  value="1"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="login-btn">Confirm Booking</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Show elements when they come into view
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight * 0.85;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Handle smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Validate enrollment number format
+      function validateEnrollment(enrollmentNumber) {
+        // Check if it contains 'A' and has 10-12 digits
+        const regex = /^.*A.*\d{10,12}.*$/;
+        return regex.test(enrollmentNumber);
+      }
+
+      // Login form submission
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const enrollment = document.getElementById("enrollment").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const enrollmentError = document.getElementById("enrollment-error");
+
+          // Check if enrollment number is valid
+          if (!validateEnrollment(enrollment)) {
+            enrollmentError.style.display = "block";
+            return;
+          } else {
+            enrollmentError.style.display = "none";
+          }
+
+          if (enrollment && email && password) {
+            // Hide login section
+            document.getElementById("login").style.display = "none";
+
+            // Show events section
+            const eventsSection = document.getElementById("events");
+            eventsSection.style.display = "block";
+
+            // Add animation to event cards
+            const eventCards = document.querySelectorAll(".event-card");
+            eventCards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("visible");
+              }, 200 * index);
+            });
+
+            // Scroll to events section
+            window.scrollTo({
+              top: eventsSection.offsetTop,
+              behavior: "smooth",
+            });
+          }
+        });
+
+      // Event details modal
+      const eventButtons = document.querySelectorAll("[data-event]");
+      const modal = document.getElementById("event-modal");
+      const closeModal = document.querySelector(".close-modal");
+
+      // Event data (would come from server in real application)
+      const eventData = {
+        "tech-talk": {
+          title: "Tech Talk: AI in 2025",
+          date: "April 10, 2025 | 10:00 AM",
+          location: "Auditorium A",
+          image: "images/tech_talk.jpg",
+          description:
+            "Join us for an insightful discussion on the future of Artificial Intelligence with industry leaders. This event will cover emerging trends, ethical considerations, and practical applications of AI across various industries. Networking opportunities will be available after the talk.",
+        },
+        "cultural-fest": {
+          title: "Annual Cultural Fest",
+          date: "April 15-17, 2025",
+          location: "Campus Grounds",
+          image: "images/cultural_fest.jpg",
+          description:
+            "Our flagship cultural extravaganza features three days of non-stop entertainment with music performances, dance competitions, art exhibitions, food stalls, and much more. Don't miss the celebrity performance on the final day!",
+        },
+        "design-workshop": {
+          title: "UX Design Workshop",
+          date: "April 20, 2025 | 2:00 PM",
+          location: "Design Studio",
+          image: "images/workshop.jpg",
+          description:
+            "This hands-on workshop will teach you the fundamentals of user experience design with practical exercises led by industry professionals. Perfect for beginners and intermediate designers looking to enhance their skills.",
+        },
+        hackathon: {
+          title: "48-Hour Hackathon",
+          date: "April 25-27, 2025",
+          location: "Tech Hub",
+          image: "images/hackathon.jpg",
+          description:
+            "Challenge yourself in this intensive coding competition. Form teams of up to 4 members and develop innovative solutions to real-world problems. Prizes include cash rewards, internship opportunities, and mentorship from leading tech companies.",
+        },
+      };
+
+      // Open modal with event details
+      eventButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const eventId = this.getAttribute("data-event");
+          const event = eventData[eventId];
+
+          document.getElementById("modal-image").src = event.image;
+          document.getElementById("modal-title").textContent = event.title;
+          document.getElementById(
+            "modal-date"
+          ).textContent = `Date & Time: ${event.date}`;
+          document.getElementById(
+            "modal-location"
+          ).textContent = `Location: ${event.location}`;
+          document.getElementById("modal-description").textContent =
+            event.description;
+
+          modal.style.display = "flex";
+        });
+      });
+
+      // Close modal
+      closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      // Close modal when clicking outside
+      window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Booking form submission
+      document
+        .getElementById("booking-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("fullname").value;
+          const tickets = document.getElementById("tickets").value;
+
+          // Replace modal content with confirmation message
+          const modalContent = document.querySelector(".modal-content");
+
+          modalContent.innerHTML = `
+        <h2 style="color: #6200ee; text-align: center;">Booking Confirmed!</h2>
+        <p style="text-align: center; margin: 20px 0;">Thank you, ${name}! Your booking for ${tickets} ticket(s) has been confirmed.</p>
+        <p style="text-align: center;">A confirmation email has been sent with the event details.</p>
+        <button class="login-btn" style="display: block; width: 200px; margin: 30px auto;" onclick="document.getElementById('event-modal').style.display='none'">Back to Events</button>
+      `;
+        });
+
+      // Initial animations
+      window.addEventListener("load", animateOnScroll);
+
+      // Scroll animations
+      window.addEventListener("scroll", animateOnScroll);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!-- **HTML (index.html)** ```html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Event Booking</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+  <body>
+    <header class="fade-in">
+      <h1>University Event Booking System</h1>
+      <p>Book your tickets to campus events hassle-free!</p>
+    </header>
+
+    <div class="events slide-up">
+      <!-- Sample Event Card -->
+      <div class="event-card zoom-in">
+        <div class="event-title">Tech Talk: AI in 2025</div>
+        <div class="event-info">April 10 | 10:00 AM | Auditorium A</div>
+        <a href="event-detail.html" class="btn">View Details</a>
+      </div>
+      <!-- Add more events as needed -->
+    </div>
+  </body>
+</html>
+<!-- ``` **HTML (event-details.html)** ```html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+  <body>
+    <header class="fade-in">
+      <h1>Event Details</h1>
+    </header>
+    <div class="container slide-up">
+      <h2>Tech Talk: AI in 2025</h2>
+      <p><strong>Date:</strong> April 10</p>
+      <p><strong>Time:</strong> 10:00 AM</p>
+      <p><strong>Location:</strong> Auditorium A</p>
+      <p>
+        Explore the future of Artificial Intelligence with leading industry
+        experts.
+      </p>
+      <a href="booking.html" class="btn">Book Ticket</a>
+    </div>
+  </body>
+</html>
+<!-- ``` **HTML (booking.html)** ```html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Your Ticket</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+  <body>
+    <header class="fade-in">
+      <h1>Book Ticket</h1>
+    </header>
+    <div class="container slide-up">
+      <form action="confirmation.html" method="GET">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="quantity">Number of Tickets:</label>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="1"
+          max="10"
+          required
+        />
+
+        <button type="submit" class="btn">Confirm Booking</button>
+      </form>
+    </div>
+  </body>
+</html>
+<!-- ``` **HTML (confirmation.html)** ```html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+  <body>
+    <header class="fade-in">
+      <h1>Booking Confirmed!</h1>
+    </header>
+    <div class="container zoom-in">
+      <p>Thank you for booking your ticket.</p>
+      <p>We look forward to seeing you at the event!</p>
+      <a href="index.html" class="btn">Back to Home</a>
+    </div>
+  </body>
+</html>
+<!-- Index page  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Your Ticket</title>
+    <link rel="stylesheet" href="code.css" />
+  </head>
+
+  <body>
+    <!-- Add this just after <body> -->
+    <img src="banner.jpg" alt="Amity University Bengaluru" class="banner-img" />
+
+    <header class="fade-in">
+      <h1>University Event Booking System</h1>
+      <p>Book your tickets to campus events hassle-free!</p>
+    </header>
+    </body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>University Event Booking</title>
+        <link rel="stylesheet" href="code.css" />
+      </head>
+      
+
+      <body>
+        <!-- Banner image -->
+        <img
+          src="/banner.jpg"
+          alt="Amity University Bengaluru"
+          class="banner-img"
+        />
+
+        <header class="fade-in">
+          <h1>University Event Booking System</h1>
+          <p>Book your tickets to campus events hassle-free!</p>
+        </header>
+
+        <!-- Event Image -->
+        <img src="/Event_photo.jpg" alt="Event Image" class="event_phots" />
+
+        <div class="events slide-up">
+          <!-- Sample Event Card -->
+          <div class="event-card zoom-in">
+            <div class="event-title">Tech Talk: AI in 2025</div>
+            <div class="event-info">April 10 | 10:00 AM | Auditorium A</div>
+            <a href="event-detail.html" class="btn">View Details</a>
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>

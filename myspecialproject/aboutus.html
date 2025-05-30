@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Amity University</title>
+    <style>
+      /* Apple-inspired design system */
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #86868b;
+        --background-color: #ffffff;
+        --text-color: #1d1d1f;
+        --light-gray: #f5f5f7;
+        --border-color: #d2d2d7;
+        --hover-color: #147ce5;
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Header and Navigation */
+      .header {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .header-logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-logo img {
+        height: 45px;
+        margin-right: 8px;
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 28px;
+      }
+
+      .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.8;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .header-nav a:hover {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+
+      .header-nav a.active {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+
+      /* Hero section for About page */
+      .about-hero {
+        padding-top: 80px;
+        padding-bottom: 60px;
+        background: linear-gradient(135deg, var(--light-gray) 0%, #e8f4fd 100%);
+        text-align: center;
+      }
+
+      .about-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .about-hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        animation: slideUp 0.8s ease-out;
+      }
+
+      .about-hero p {
+        font-size: 24px;
+        color: var(--secondary-color);
+        animation: slideUp 0.8s ease-out 0.1s backwards;
+      }
+
+      /* Section styling */
+      .section {
+        padding: 120px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .section-light {
+        background-color: var(--light-gray);
+      }
+
+      .section-title {
+        font-size: 40px;
+        margin-bottom: 16px;
+        color: inherit;
+      }
+
+      .section-subtitle {
+        font-size: 21px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        max-width: 700px;
+        margin: 0 auto 60px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* About section styling */
+      .feature-row {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 100px;
+        align-items: center;
+      }
+
+      .feature-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .feature-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .feature-text {
+        flex: 1;
+        text-align: left;
+        padding: 0 20px;
+      }
+
+      .feature-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .feature-description {
+        font-size: 17px;
+        color: var(--secondary-color);
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .feature-image {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .feature-image:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Stats section */
+      .stats-section {
+        background-color: var(--text-color);
+        color: white;
+        padding: 80px 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Values section */
+      .values-section {
+        padding: 100px 0;
+        background-color: var(--background-color);
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .value-card {
+        background-color: var(--light-gray);
+        padding: 40px 30px;
+        border-radius: 16px;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .value-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .value-title {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: var(--text-color);
+      }
+
+      .value-description {
+        font-size: 16px;
+        color: var(--secondary-color);
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--text-color);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .footer p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        .feature-row,
+        .feature-row:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .about-hero h1 {
+          font-size: 40px;
+        }
+
+        .about-hero p {
+          font-size: 20px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .feature-text {
+          text-align: center;
+          padding: 0;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          padding: 0 16px;
+        }
+
+        .header-nav {
+          gap: 16px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <img src="banner.jpg" alt="Amity University Logo" />
+        <span>Amity</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="event.html">Events</a>
+        <a href="sponsership.html">Sponsor</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>About Amity University</h1>
+        <p>Shaping leaders, innovators, and change-makers for tomorrow</p>
+      </div>
+    </section>
+
+    <!-- Main About Section -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">Educational Excellence</h3>
+            <p class="feature-description">
+              Amity University stands as a beacon of higher education with a
+              commitment to excellence. Established with a vision to provide
+              quality education, Amity has grown to become one of the most
+              prestigious universities globally.
+            </p>
+            <p class="feature-description">
+              Our campus is a hub of innovation, cultural diversity, and
+              academic brilliance. We provide state-of-the-art facilities,
+              world-class faculty, and a dynamic learning environment to nurture
+              future leaders.
+            </p>
+          </div>
+          <div class="feature-image">
+            <img
+              src="amity university outdoor photo.jpg"
+              alt="Amity University Campus"
+            />
+          </div>
+        </div>
+
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">World-Class Events</h3>
+            <p class="feature-description">
+              Amity University is renowned for its exceptional event
+              organization, bringing together students from various disciplines
+              to create memorable experiences. Our events range from technical
+              exhibitions to cultural extravaganzas.
+            </p>
+            <p class="feature-description">
+              Each year, we organize multiple flagship events including "Amity
+              Youth Fest," "TechnoAmity," "Cultural Vista," and "Sports Fiesta."
+              These events are meticulously planned and executed by dedicated
+              student committees with faculty guidance.
+            </p>
+          </div>
+          <div class="feature-image">
+            <img src="Event_photo.jpg" alt="Amity University Festival" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <h2 class="section-title" style="color: white; margin-bottom: 60px">
+          Our Impact in Numbers
+        </h2>
+        <div class="stats-grid animate-on-scroll">
+          <div class="stat-item">
+            <div class="stat-number">150,000+</div>
+            <div class="stat-label">Students Worldwide</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Programs Offered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">International Partnerships</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Core Values</h2>
+        <p class="section-subtitle animate-on-scroll">
+          The principles that guide everything we do at Amity University
+        </p>
+
+        <div class="values-grid">
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">🎓</div>
+            <h3 class="value-title">Academic Excellence</h3>
+            <p class="value-description">
+              We maintain the highest standards of education through innovative
+              curriculum, research-driven learning, and world-class faculty.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">🌍</div>
+            <h3 class="value-title">Global Perspective</h3>
+            <p class="value-description">
+              Our international partnerships and diverse community prepare
+              students for success in the global marketplace.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">💡</div>
+            <h3 class="value-title">Innovation & Research</h3>
+            <p class="value-description">
+              We foster creativity and critical thinking through cutting-edge
+              research and hands-on learning experiences.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">🤝</div>
+            <h3 class="value-title">Community Impact</h3>
+            <p class="value-description">
+              We believe in giving back to society and making a positive impact
+              on communities through education and service.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">🌟</div>
+            <h3 class="value-title">Student Success</h3>
+            <p class="value-description">
+              Every student's success is our priority, supported by
+              comprehensive career services and mentorship programs.
+            </p>
+          </div>
+
+          <div class="value-card animate-on-scroll">
+            <div class="value-icon">🔬</div>
+            <h3 class="value-title">Technology Leadership</h3>
+            <p class="value-description">
+              We embrace emerging technologies and digital transformation to
+              enhance learning and prepare future leaders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="sponsor.html">Sponsor</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p>&copy; 2025 Amity University. All rights reserved.</p>
+        <p>Excellence in Education | Innovation in Learning</p>
+      </div>
+    </footer>
+
+    <script>
+      // Show elements when they come into view
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight * 0.85;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Initialize animations
+      window.addEventListener("load", animateOnScroll);
+      window.addEventListener("scroll", animateOnScroll);
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 60,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

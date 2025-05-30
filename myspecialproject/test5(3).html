@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University</title>
+    <style>
+      /* Apple-inspired design system */
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #86868b;
+        --background-color: #ffffff;
+        --text-color: #1d1d1f;
+        --light-gray: #f5f5f7;
+        --border-color: #d2d2d7;
+        --hover-color: #147ce5;
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+        --success-color: #30d158;
+        --warning-color: #ff9f0a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Header and Navigation */
+      .header {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .header-logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-logo img {
+        height: 24px;
+        margin-right: 8px;
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 28px;
+      }
+
+      .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.8;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .header-nav a:hover {
+        opacity: 1;
+        color: var(--primary-color);
+      }
+
+      /* Hero section */
+      .hero {
+        padding-top: 60px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: var(--light-gray);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        animation: slideUp 0.8s ease-out;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        margin-bottom: 30px;
+        animation: slideUp 0.8s ease-out 0.1s backwards;
+      }
+
+      .hero-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        z-index: 0;
+      }
+
+      .button-primary {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 400;
+        transition: var(--transition);
+        animation: slideUp 0.8s ease-out 0.2s backwards;
+        margin: 0 10px 10px 0;
+        cursor: pointer;
+      }
+
+      .button-primary:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+      }
+
+      .button-secondary {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--primary-color);
+        padding: 12px 24px;
+        border: 2px solid var(--primary-color);
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 400;
+        transition: var(--transition);
+        animation: slideUp 0.8s ease-out 0.3s backwards;
+        margin: 0 10px 10px 0;
+        cursor: pointer;
+      }
+
+      .button-secondary:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Section styling */
+      .section {
+        padding: 120px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .section.hidden {
+        display: none;
+      }
+
+      .section-light {
+        background-color: var(--light-gray);
+      }
+
+      .section-dark {
+        background-color: var(--text-color);
+        color: white;
+      }
+
+      .section-title {
+        font-size: 40px;
+        margin-bottom: 16px;
+        color: inherit;
+      }
+
+      .section-subtitle {
+        font-size: 21px;
+        font-weight: 400;
+        color: var(--secondary-color);
+        max-width: 700px;
+        margin: 0 auto 60px;
+      }
+
+      .section-dark .section-subtitle {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* About section styling */
+      .feature-row {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 100px;
+        align-items: center;
+      }
+
+      .feature-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .feature-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .feature-text {
+        flex: 1;
+        text-align: left;
+        padding: 0 20px;
+      }
+
+      .feature-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .feature-description {
+        font-size: 17px;
+        color: var(--secondary-color);
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .feature-image {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .feature-image:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Form sections styling */
+      .form-section {
+        padding: 120px 20px;
+        background-color: var(--light-gray);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .form-section.active {
+        display: flex;
+      }
+
+      .form-container {
+        background-color: var(--background-color);
+        border-radius: 18px;
+        box-shadow: var(--shadow-md);
+        width: 100%;
+        max-width: 500px;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .form-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        color: var(--text-color);
+      }
+
+      .form-description {
+        font-size: 16px;
+        color: var(--secondary-color);
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      .form-input, .form-select, .form-textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        font-size: 16px;
+        transition: var(--transition);
+        font-family: inherit;
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .form-input:focus, .form-select:focus, .form-textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.2);
+        outline: none;
+      }
+
+      .error-message {
+        color: #ff3b30;
+        font-size: 14px;
+        margin-top: 6px;
+        display: none;
+      }
+
+      .submit-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 13px 20px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .submit-button:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+      }
+
+      .form-links {
+        margin-top: 24px;
+        font-size: 14px;
+      }
+
+      .form-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .form-links a:hover {
+        text-decoration: underline;
+      }
+
+      .back-button {
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+        margin-bottom: 20px;
+        transition: var(--transition);
+      }
+
+      .back-button:hover {
+        color: var(--hover-color);
+      }
+
+      /* Form row for side-by-side inputs */
+      .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+        margin-bottom: 0;
+      }
+
+      /* Success message styling */
+      .success-message {
+        background-color: var(--success-color);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        display: none;
+      }
+
+      /* Sponsor package cards */
+      .sponsor-packages {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .package-card {
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .package-card:hover, .package-card.selected {
+        border-color: var(--primary-color);
+        background-color: rgba(0, 113, 227, 0.05);
+      }
+
+      .package-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .package-price {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .package-features {
+        list-style: none;
+        font-size: 12px;
+        color: var(--secondary-color);
+      }
+
+      .package-features li {
+        margin-bottom: 3px;
+      }
+
+      /* Events section */
+      .events-section {
+        padding: 120px 20px;
+        background-color: var(--background-color);
+        min-height: 100vh;
+        display: none;
+      }
+
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .event-card {
+        background-color: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .event-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .event-image-container {
+        height: 220px;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .event-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .event-card:hover .event-image {
+        transform: scale(1.05);
+      }
+
+      .event-content {
+        padding: 20px 24px 30px;
+      }
+
+      .event-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--text-color);
+      }
+
+      .event-info {
+        font-size: 14px;
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+      }
+
+      .event-description {
+        margin-bottom: 24px;
+        font-size: 16px;
+        color: var(--text-color);
+        line-height: 1.5;
+        opacity: 0.8;
+      }
+
+      .event-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 18px;
+        border-radius: 980px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .event-button:hover {
+        background-color: var(--hover-color);
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 18px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 30px;
+        position: relative;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: var(--secondary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        color: var(--text-color);
+      }
+
+      .modal-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 24px;
+      }
+
+      .modal-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+
+      .modal-subtitle {
+        font-size: 16px;
+        color: var(--secondary-color);
+        margin-bottom: 8px;
+      }
+
+      .modal-description {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 24px;
+        opacity: 0.8;
+      }
+
+      .booking-form-title {
+        font-size: 22px;
+        margin-bottom: 24px;
+        color: var(--text-color);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        .feature-row,
+        .feature-row:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .hero h2 {
+          font-size: 22px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .feature-text {
+          text-align: center;
+          padding: 0;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .form-row .form-group {
+          margin-bottom: 24px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          padding: 0 16px;
+        }
+
+        .header-nav {
+          gap: 16px;
+        }
+
+        .button-primary, .button-secondary {
+          font-size: 14px;
+          padding: 10px 20px;
+          display: block;
+          margin: 10px auto;
+          text-align: center;
+        }
+
+        .form-container {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <img src="amity university outdoor photo.jpg" alt="Amity University Logo" />
+        <span>Amity</span>
+      </div>
+      <nav class="header-nav">
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('login')">Sign In</a>
+        <a onclick="showSection('sponsor')">Sponsor</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section">
+      <img src="amity university outdoor photo.jpg" alt="Amity University Campus" class="hero-bg" />
+      <div class="hero-content">
+        <h1>Excellence in Education</h1>
+        <h2>Discover a world of opportunities at Amity University</h2>
+        <div>
+          <a onclick="showSection('login')" class="button-primary">Student Login</a>
+          <a onclick="showSection('signup')" class="button-secondary">Join as Outsider</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section hidden">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">About Amity University</h2>
+        <p class="section-subtitle animate-on-scroll">
+          A premier institution dedicated to innovation, research, and holistic development.
+        </p>
+
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">Educational Excellence</h3>
+            <p class="feature-description">
+              Amity University stands as a beacon of higher education with a commitment to excellence. 
+              Established with a vision to provide quality education, Amity has grown to become one of 
+              the most prestigious universities globally.
+            </p>
+            <p class="feature-description">
+              Our campus is a hub of innovation, cultural diversity, and academic brilliance. We provide 
+              state-of-the-art facilities, world-class faculty, and a dynamic learning environment to 
+              nurture future leaders.
+            </p>
+          </div>
+          <div class="feature-image">
+            <img src="banner.jpg" alt="Amity University Campus" />
+          </div>
+        </div>
+
+        <div class="feature-row animate-on-scroll">
+          <div class="feature-text">
+            <h3 class="feature-title">World-Class Events</h3>
+            <p class="feature-description">
+              Amity University is renowned for its exceptional event organization, bringing together 
+              students from various disciplines to create memorable experiences. Our events range from 
+              technical exhibitions to cultural extravaganzas.
+            </p>
+            <p class="feature-description">
+              Each year, we organize multiple flagship events including "Amity Youth Fest," "TechnoAmity," 
+              "Cultural Vista," and "Sports Fiesta." These events are meticulously planned and executed 
+              by dedicated student committees with faculty guidance.
+            </p>
+          </div>
+          <div class="feature-image">
+            <img src="Event_photo.jpg" alt="Amity University Festival" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Login Section -->
+    <section id="login" class="form-section">
+      <div class="form-container animate-on-scroll">
+        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <h2 class="form-title">Student Sign In</h2>
+        <p class="form-description">Access your student portal to book events and view exclusive content.</p>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="enrollment">Student Enrollment Number</label>
+            <input
+              type="text"
+              id="enrollment"
+              class="form-input"
+              placeholder="e.g. A123456789012"
+              required
+            />
+            <p id="enrollment-error" class="error-message">
+              Enrollment number must contain the letter 'A' and 10-12 digits
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="your.email@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-button">Sign In</button>
+          <div class="form-links">
+            <a onclick="showSection('home')">Forgot Password?</a> | 
+            <a onclick="showSection('signup')">Not a student? Join as Outsider</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Outsider Sign Up Section -->
+    <section id="signup" class="form-section">
+      <div class="form-container animate-on-scroll">
+        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <h2 class="form-title">Join as Outsider</h2>
+        <p class="form-description">Register to participate in our public events and stay updated with Amity University activities.</p>
+        
+        <div id="signup-success" class="success-message">
+          Registration successful! Welcome to Amity University community.
+        </div>
+        
+        <form id="signup-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="signup-firstname">First Name</label>
+              <input
+                type="text"
+                id="signup-firstname"
+                class="form-input"
+                placeholder="John"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-lastname">Last Name</label>
+              <input
+                type="text"
+                id="signup-lastname"
+                class="form-input"
+                placeholder="Doe"
+                required
+              />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <input
+              type="email"
+              id="signup-email"
+              class="form-input"
+              placeholder="john.doe@example.com"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="signup-phone"
+              class="form-input"
+              placeholder="+91 98765 43210"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-organization">Organization/Company (Optional)</label>
+            <input
+              type="text"
+              id="signup-organization"
+              class="form-input"
+              placeholder="ABC Corporation"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-interests">Areas of Interest</label>
+            <select id="signup-interests" class="form-select" required>
+              <option value="">Select your interest</option>
+              <option value="technology">Technology & Innovation</option>
+              <option value="cultural">Cultural Events</option>
+              <option value="sports">Sports & Fitness</option>
+              <option value="business">Business & Entrepreneurship</option>
+              <option value="research">Research & Academic</option>
+              <option value="social">Social & Community Service</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="submit-button">Create Account</button>
+          <div class="form-links">
+            Already registered? <a onclick="showSection('login')">Sign In</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sponsor Registration Section -->
+    <section id="sponsor" class="form-section">
+      <div class="form-container animate-on-scroll" style="max-width: 700px;">
+        <button class="back-button" onclick="showSection('home')">← Back to Home</button>
+        <h2 class="form-title">Become an Event Sponsor</h2>
+        <p class="form-description">Partner with Amity University and gain exposure to thousands of students and faculty members through our prestigious events.</p>
+        
+        <div id="sponsor-success" class="success-message">
+          Thank you for your interest! Our sponsorship team will contact you within 24 hours.
+        </div>
+        
+        <form id="sponsor-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sponsor-name">Contact Person Name</label>
+              <input
+                type="text"
+                id="sponsor-name"
+                class="form-input"
+                placeholder="Jane Smith"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="sponsor-designation">Designation</label>
+              <input
+                type="text"
+                id="sponsor-designation"
+                class="form-input"
+                placeholder="Marketing Manager"
+                required
+              />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="sponsor-company">Company/Organization Name</label>
+            <input
+              type="text"
+              id="sponsor-company"
+              class="form-input"
+              placeholder="Tech Solutions Inc."
+              required
+            />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sponsor-email">Business Email</label>
+              <input
+                type="email"
+                id="sponsor-email"
+                class="form-input"
+                placeholder="jane@techsolutions.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="sponsor-phone">Contact Number</label>
+              <input
+                type="tel"
+                id="sponsor-phone"
+                class="form-input"
+                placeholder="+91 98765 43210"
+                required
+              />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="sponsor-website">Company Website</label>
+            <input
+              type="url"
+              id="sponsor-website"
+              class="form-input"
+              placeholder="https://www.techsolutions.com"
+            />
+          </div>
+          
+          <div class="
