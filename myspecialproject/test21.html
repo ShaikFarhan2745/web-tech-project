@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University Bengaluru - AMIGLORIA 2025</title>
+    <style>
+      /* Enhanced design system with more vibrant elements */
+      :root {
+        --primary-color: #0071e3;
+        --secondary-color: #86868b;
+        --accent-color: #ff6b35;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --background-color: #ffffff;
+        --text-color: #1d1d1f;
+        --light-gray: #f5f5f7;
+        --dark-bg: #1a1a1a;
+        --border-color: #d2d2d7;
+        --hover-color: #147ce5;
+        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        --gradient-dark: linear-gradient(135deg, #434343 0%, #000000 100%);
+        --gradient-day: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      /* Enhanced animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200px 0;
+        }
+        100% {
+          background-position: calc(200px + 100%) 0;
+        }
+      }
+
+      /* Enhanced Header */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 12px 40px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+      }
+
+      .header.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .header-logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .header-nav a:hover {
+        background: var(--light-gray);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .cta-button {
+        background: var(--gradient-primary);
+        color: white !important;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        box-shadow: var(--shadow-md);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        background: var(--gradient-accent);
+      }
+
+      /* Enhanced Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--gradient-dark);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;charset=UTF-8,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        padding: 0 40px;
+        z-index: 2;
+        position: relative;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 24px;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .event-schedule {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 24px;
+        animation: fadeInUp 0.8s ease-out 0.1s backwards;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        line-height: 1.1;
+        margin-bottom: 16px;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f093fb 50%,
+          #f5576c 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 40px;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.6s backwards;
+      }
+
+      .button-primary {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: var(--shadow-md);
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .button-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        animation: pulse 0.6s ease-in-out;
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .button-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-3px);
+      }
+
+      .button-success {
+        background: var(--gradient-success);
+        color: white;
+      }
+
+      .button-warning {
+        background: var(--warning-color);
+        color: var(--dark-bg);
+      }
+
+      .button-day {
+        background: var(--gradient-day);
+        color: var(--dark-bg);
+      }
+
+      /* Enhanced About Section */
+      .about-section {
+        padding: 120px 0;
+        background: var(--light-gray);
+      }
+
+      .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .about-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .about-title {
+        font-size: 48px;
+        margin-bottom: 20px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .about-subtitle {
+        font-size: 24px;
+        color: var(--secondary-color);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 80px;
+      }
+
+      .about-text h3 {
+        font-size: 36px;
+        margin-bottom: 24px;
+        color: var(--text-color);
+      }
+
+      .about-text p {
+        font-size: 18px;
+        color: var(--secondary-color);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .about-image {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+      }
+
+      .about-image:hover {
+        transform: scale(1.03);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: 120px 0;
+        background: var(--background-color);
+      }
+
+      .pricing-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .pricing-title {
+        font-size: 48px;
+        margin-bottom: 20px;
+        background: var(--gradient-success);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .pricing-card {
+        background: white;
+        border-radius: 25px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border: 2px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-card.featured {
+        border-color: var(--primary-color);
+        transform: scale(1.05);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .pricing-card.day-pass {
+        border-color: #ff9a9e;
+        background: linear-gradient(135deg, #fff5f5 0%, #ffe8ef 100%);
+      }
+
+      .pricing-card.featured::before {
+        content: "Most Popular";
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 8px 40px;
+        font-size: 12px;
+        font-weight: 600;
+        transform: rotate(45deg);
+      }
+
+      .pricing-card.day-pass::before {
+        content: "Flexible Option";
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        background: var(--gradient-day);
+        color: var(--dark-bg);
+        padding: 8px 40px;
+        font-size: 12px;
+        font-weight: 600;
+        transform: rotate(45deg);
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-10px);
+      }
+
+      .pricing-card.day-pass:hover {
+        border-color: #ff9a9e;
+        transform: translateY(-10px);
+      }
+
+      .pricing-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .pricing-title-card {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: var(--text-color);
+      }
+
+      .pricing-price {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+      }
+
+      .pricing-card.day-pass .pricing-price {
+        color: #e91e63;
+      }
+
+      .pricing-period {
+        color: var(--secondary-color);
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .pricing-features li {
+        padding: 12px 0;
+        color: var(--text-color);
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .pricing-features li::before {
+        content: "✓";
+        color: var(--success-color);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .pricing-features li.unavailable {
+        color: var(--secondary-color);
+        text-decoration: line-through;
+      }
+
+      .pricing-features li.unavailable::before {
+        content: "✗";
+        color: var(--secondary-color);
+      }
+
+      /* Enhanced Events Section */
+      .events-section {
+        padding: 120px 0;
+        background: var(--light-gray);
+      }
+
+      .events-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .events-title {
+        font-size: 48px;
+        margin-bottom: 20px;
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .events-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .category-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      .category-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .category-title {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: var(--text-color);
+      }
+
+      .category-events {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .category-events li {
+        padding: 8px 0;
+        color: var(--secondary-color);
+        font-size: 16px;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .category-events li:last-child {
+        border-bottom: none;
+      }
+
+      .event-price {
+        background: var(--light-gray);
+        padding: 12px 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      /* Day Pass Section */
+      .day-pass-section {
+        padding: 120px 0;
+        background: linear-gradient(135deg, #f5f7ff 0%, #fff5f8 100%);
+      }
+
+      .day-pass-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .day-pass-title {
+        font-size: 48px;
+        margin-bottom: 20px;
+        background: var(--gradient-day);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .day-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .day-card {
+        background: white;
+        border-radius: 25px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        border: 2px solid #ff9a9e;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .day-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: var(--gradient-day);
+      }
+
+      .day-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .day-number {
+        background: var(--gradient-day);
+        color: var(--dark-bg);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 auto 20px;
+      }
+
+      .day-date {
+        font-size: 18px;
+        color: var(--secondary-color);
+        margin-bottom: 10px;
+      }
+
+      .day-schedule {
+        background: var(--light-gray);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .time-slot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .time-slot:last-child {
+        border-bottom: none;
+      }
+
+      .time {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      /* Registration Form */
+      .registration-section {
+        padding: 120px 40px;
+        background: var(--gradient-dark);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .registration-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        box-shadow: var(--shadow-lg);
+        width: 100%;
+        max-width: 800px;
+        padding: 50px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .registration-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .form-tabs {
+        display: flex;
+        margin-bottom: 40px;
+        border-radius: 15px;
+        background: var(--light-gray);
+        padding: 5px;
+      }
+
+      .form-tab {
+        flex: 1;
+        padding: 15px 20px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+        border: none;
+        background: transparent;
+      }
+
+      .form-tab.active {
+        background: white;
+        color: var(--primary-color);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .form-content {
+        display: none;
+      }
+
+      .form-content.active {
+        display: block;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-color);
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 16px 20px;
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        font-size: 16px;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .form-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      .form-select {
+        width: 100%;
+        padding: 16px 20px;
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        font-size: 16px;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+      }
+
+      .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        outline: none;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--light-gray);
+        padding: 12px 16px;
+        border-radius: 10px;
+        transition: var(--transition);
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .checkbox-item:hover {
+        background: rgba(0, 113, 227, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .checkbox-item.selected {
+        background: rgba(0, 113, 227, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .day-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .day-option {
+        background: var(--light-gray);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .day-option:hover,
+      .day-option.selected {
+        background: rgba(255, 154, 158, 0.1);
+        border-color: #ff9a9e;
+      }
+
+      .day-option input[type="checkbox"] {
+        margin-bottom: 10px;
+      }
+
+      .day-option-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .day-option-date {
+        color: var(--secondary-color);
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .day-option-price {
+        font-weight: 700;
+        color: #e91e63;
+        font-size: 18px;
+      }
+
+      .total-section {
+        background: var(--light-gray);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px 0;
+      }
+
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .total-row.final {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary-color);
+        border-top: 2px solid var(--border-color);
+        padding-top: 15px;
+        margin-top: 15px;
+      }
+
+      .payment-section {
+        background: var(--light-gray);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 30px 0;
+      }
+
+      .payment-methods {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .payment-method {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--transition);
+        background: white;
+      }
+
+      .payment-method:hover,
+      .payment-method.selected {
+        border-color: var(--primary-color);
+        background: rgba(0, 113, 227, 0.05);
+      }
+
+      .payment-method input[type="radio"] {
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .payment-details {
+        display: nonemargin-top:20px;
+      }
+
+      .payment-details.active {
+        display: block;
+      }
+
+      .qr-container {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+
+      .qr-code {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--light-gray);
+        font-size: 14px;
+        color: var(--secondary-color);
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 18px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow-md);
+      }
+
+      .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        background: var(--gradient-accent);
+      }
+
+      .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Enhanced Footer */
+      .footer {
+        background: var(--dark-bg);
+        color: white;
+        padding: 80px 0 40px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .footer-section a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header {
+          padding: 12px 20px;
+        }
+
+        .header-nav {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+        }
+
+        .hero h2 {
+          font-size: 24px;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .about-title,
+        .pricing-title,
+        .events-title,
+        .day-pass-title {
+          font-size: 36px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .day-selection {
+          grid-template-columns: 1fr;
+        }
+
+        .payment-methods {
+          grid-template-columns: 1fr;
+        }
+
+        .registration-container {
+          margin: 20px;
+          padding: 30px 20px;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Notification Styles */
+      .notification {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        background: var(--gradient-success);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: var(--shadow-lg);
+        z-index: 1001;
+        transform: translateX(400px);
+        transition: var(--transition);
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification.error {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      }
+
+      /* Scroll Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: var(--transition);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: var(--transition);
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: var(--transition);
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="header-container">
+        <div class="header-logo">AMITY UNIVERSITY BENGALURU</div>
+        <nav class="header-nav">
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#register" class="cta-button">Register Now</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">🎉 Annual Cultural Festival</div>
+        <div class="event-schedule">📅 February 14-16, 2025 | Amity University Bengaluru</div>
+        <h1>AMIGLORIA 2025</h1>
+        <h2>Where Creativity Meets Excellence</h2>
+        <div class="hero-buttons">
+          <a href="#register" class="button-primary">
+            Register Now
+            <span style="font-size: 16px;">🎯</span>
+          </a>
+          <a href="#events" class="button-secondary">Explore Events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-container">
+        <div class="about-header fade-in">
+          <h2 class="about-title">About AMIGLORIA</h2>
+          <p class="about-subtitle">
+            The biggest cultural extravaganza of Amity University Bengaluru,
+            bringing together talent, creativity, and innovation in one spectacular event.
+          </p>
+        </div>
+        <div class="about-content">
+          <div class="about-text slide-in-left">
+            <h3>Celebrate Excellence</h3>
+            <p>
+              AMIGLORIA 2025 is more than just a festival – it's a celebration of
+              diverse talents, creative expression, and cultural unity. Join us for
+              three days of unforgettable performances, competitions, and experiences.
+            </p>
+            <p>
+              With over 50+ events spanning music, dance, drama, literary arts,
+              and technical competitions, there's something for everyone to showcase
+              their skills and passion.
+            </p>
+          </div>
+          <div class="about-image slide-in-right">
+            <img
+              src="event-photo-lohar.jpg"
+              alt="Cultural Festival"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+      <div class="about-container">
+        <div class="events-header fade-in">
+          <h2 class="events-title">Event Categories</h2>
+          <p class="about-subtitle">
+            Discover the diverse range of competitions and performances awaiting you
+          </p>
+        </div>
+        <div class="events-categories">
+          <div class="category-card fade-in">
+            <div class="category-icon">🎵</div>
+            <h3 class="category-title">Music</h3>
+            <ul class="category-events">
+              <li>Solo Singing (Classical & Western)</li>
+              <li>Group Singing</li>
+              <li>Instrumental Solo</li>
+              <li>Band Performance</li>
+              <li>Beat Boxing</li>
+            </ul>
+            <div class="event-price">Registration: ₹200-500 per event</div>
+          </div>
+          <div class="category-card fade-in">
+            <div class="category-icon">💃</div>
+            <h3 class="category-title">Dance</h3>
+            <ul class="category-events">
+              <li>Classical Dance</li>
+              <li>Western Dance</li>
+              <li>Folk Dance</li>
+              <li>Hip Hop Battle</li>
+              <li>Couple Dance</li>
+            </ul>
+            <div class="event-price">Registration: ₹300-600 per event</div>
+          </div>
+          <div class="category-card fade-in">
+            <div class="category-icon">🎭</div>
+            <h3 class="category-title">Drama & Arts</h3>
+            <ul class="category-events">
+              <li>Solo Acting</li>
+              <li>Street Play</li>
+              <li>Mime</li>
+              <li>Stand-up Comedy</li>
+              <li>Fashion Show</li>
+            </ul>
+            <div class="event-price">Registration: ₹250-700 per event</div>
+          </div>
+          <div class="category-card fade-in">
+            <div class="category-icon">✍️</div>
+            <h3 class="category-title">Literary</h3>
+            <ul class="category-events">
+              <li>Poetry Writing</li>
+              <li>Debate Competition</li>
+              <li>Elocution</li>
+              <li>Creative Writing</li>
+              <li>Spelling Bee</li>
+            </ul>
+            <div class="event-price">Registration: ₹150-400 per event</div>
+          </div>
+          <div class="category-card fade-in">
+            <div class="category-icon">🎨</div>
+            <h3 class="category-title">Fine Arts</h3>
+            <ul class="category-events">
+              <li>Painting Competition</li>
+              <li>Sculpture Making</li>
+              <li>Digital Art</li>
+              <li>Photography</li>
+              <li>Rangoli Making</li>
+            </ul>
+            <div class="event-price">Registration: ₹200-500 per event</div>
+          </div>
+          <div class="category-card fade-in">
+            <div class="category-icon">💻</div>
+            <h3 class="category-title">Technical</h3>
+            <ul class="category-events">
+              <li>Coding Competition</li>
+              <li>Web Design</li>
+              <li>App Development</li>
+              <li>Gaming Tournament</li>
+              <li>Tech Quiz</li>
+            </ul>
+            <div class="event-price">Registration: ₹300-800 per event</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-header fade-in">
+        <h2 class="pricing-title">Choose Your Pass</h2>
+        <p class="about-subtitle">
+          Select the perfect pass for your AMIGLORIA 2025 experience
+        </p>
+      </div>
+      <div class="pricing-cards">
+        <div class="pricing-card fade-in">
+          <div class="pricing-icon">🎟️</div>
+          <h3 class="pricing-title-card">Basic Pass</h3>
+          <div class="pricing-price">₹1,500</div>
+          <div class="pricing-period">3 Days Access</div>
+          <ul class="pricing-features">
+            <li>Entry to all cultural events</li>
+            <li>Basic seating arrangement</li>
+            <li>Event participation (additional charges)</li>
+            <li>Basic refreshments</li>
+            <li>Certificate of participation</li>
+            <li class="unavailable">VIP seating</li>
+            <li class="unavailable">Exclusive workshops</li>
+          </ul>
+          <a href="#register" class="button-primary">Choose Basic</a>
+        </div>
+        <div class="pricing-card featured fade-in">
+          <div class="pricing-icon">🎫</div>
+          <h3 class="pricing-title-card">Premium Pass</h3>
+          <div class="pricing-price">₹2,500</div>
+          <div class="pricing-period">3 Days Access</div>
+          <ul class="pricing-features">
+            <li>Entry to all cultural events</li>
+            <li>Premium seating arrangement</li>
+            <li>5 free event participations</li>
+            <li>Welcome kit & merchandise</li>
+            <li>All meals included</li>
+            <li>Exclusive workshops access</li>
+            <li>Certificate of participation</li>
+          </ul>
+          <a href="#register" class="button-primary button-success">Choose Premium</a>
+        </div>
+        <div class="pricing-card day-pass fade-in">
+          <div class="pricing-icon">🎪</div>
+          <h3 class="pricing-title-card">Day Pass</h3>
+          <div class="pricing-price">₹800</div>
+          <div class="pricing-period">Per Day</div>
+          <ul class="pricing-features">
+            <li>Entry to selected day events</li>
+            <li>Standard seating</li>
+            <li>2 free event participations</li>
+            <li>Basic refreshments</li>
+            <li>Day-specific certificate</li>
+            <li class="unavailable">Multi-day access</li>
+            <li class="unavailable">Exclusive workshops</li>
+          </ul>
+          <a href="#register" class="button-primary button-day">Choose Day Pass</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day Pass Details -->
+    <section class="day-pass-section">
+      <div class="day-pass-header fade-in">
+        <h2 class="day-pass-title">Day-wise Schedule</h2>
+        <p class="about-subtitle">
+          Choose specific days that match your interests and schedule
+        </p>
+      </div>
+      <div class="day-cards">
+        <div class="day-card fade-in">
+          <div class="day-number">1</div>
+          <h3 class="pricing-title-card">Day 1 - Opening Ceremony</h3>
+          <div class="day-date">February 14, 2025 (Friday)</div>
+          <div class="day-schedule">
+            <div class="time-slot">
+              <span class="time">9:00 AM</span>
+              <span>Registration & Welcome</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">10:30 AM</span>
+              <span>Inaugural Ceremony</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">12:00 PM</span>
+              <span>Music Competitions</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">3:00 PM</span>
+              <span>Dance Performances</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">6:00 PM</span>
+              <span>Celebrity Performance</span>
+            </div>
+          </div>
+          <div class="day-option-price">₹800 per person</div>
+        </div>
+        <div class="day-card fade-in">
+          <div class="day-number">2</div>
+          <h3 class="pricing-title-card">Day 2 - Competitions</h3>
+          <div class="day-date">February 15, 2025 (Saturday)</div>
+          <div class="day-schedule">
+            <div class="time-slot">
+              <span class="time">9:00 AM</span>
+              <span>Literary Events</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">11:00 AM</span>
+              <span>Fine Arts Competition</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">2:00 PM</span>
+              <span>Technical Events</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">4:00 PM</span>
+              <span>Drama & Theatre</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">7:00 PM</span>
+              <span>Cultural Night</span>
+            </div>
+          </div>
+          <div class="day-option-price">₹800 per person</div>
+        </div>
+        <div class="day-card fade-in">
+          <div class="day-number">3</div>
+          <h3 class="pricing-title-card">Day 3 - Grand Finale</h3>
+          <div class="day-date">February 16, 2025 (Sunday)</div>
+          <div class="day-schedule">
+            <div class="time-slot">
+              <span class="time">10:00 AM</span>
+              <span>Final Competitions</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">1:00 PM</span>
+              <span>Workshops & Masterclass</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">4:00 PM</span>
+              <span>Award Ceremony</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">6:00 PM</span>
+              <span>Grand Finale Show</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">8:00 PM</span>
+              <span>Closing Ceremony</span>
+            </div>
+          </div>
+          <div class="day-option-price">₹800 per person</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="register">
+      <div class="registration-container">
+        <h2 class="registration-title">Register for AMIGLORIA 2025</h2>
+        
+        <div class="form-tabs">
+          <button class="form-tab active" data-tab="pass">Choose Pass</button>
+          <button class="form-tab" data-tab="details">Personal Details</button>
+          <button class="form-tab" data-tab="payment">Payment</button>
+        </div>
+
+        <form id="registrationForm">
+          <!-- Pass Selection -->
+          <div class="form-content active" id="pass-content">
+            <div class="form-group">
+              <label>Select Your Pass:</label>
+              <div class="checkbox-group">
+                <div class="checkbox-item" data-pass="basic">
+                  <input type="radio" name="pass" value="basic" id="basic">
+                  <label for="basic">Basic Pass - ₹200</label>
+                </div>
+                <div class="checkbox-item" data-pass="premium">
+                  <input type="radio" name="pass" value="premium" id="premium">
+                  <label for="premium">Premium Pass - ₹500</label>
+                </div>
+                <div class="checkbox-item" data-pass="day">
+                  <input type="radio" name="pass" value="day" id="day">
+                  <label for="day">Day Pass - ₹100/day</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" id="day-selection" style="display: none;">
+              <label>Select Days:</label>
+              <div class="day-selection">
+                <div class="day-option" data-day="day1">
+                  <input type="checkbox" name="days" value="day1" id="day1">
+                  <div class="day-option-title">Day 1</div>
+                  <div class="day-option-date">Feb 14, 2025</div>
+                  <div class="day-option-price">₹800</div>
+                </div>
+                <div class="day-option" data-day="day2">
+                  <input type="checkbox" name="days" value="day2" id="day2">
+                  <div class="day-option-title">Day 2</div>
+                  <div class="day-option-date">Feb 15, 2025</div>
+                  <div class="day-option-price">₹800</div>
+                </div>
+                <div class="day-option" data-day="day3">
+                  <input type="checkbox" name="days" value="day3" id="day3">
+                  <div class="day-option-title">Day 3</div>
+                  <div class="day-option-date">Feb 16, 2025</div>
+                  <div class="day-option-price">₹800</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Additional Events (Optional):</label>
+              <div class="checkbox-group">
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="music" id="music">
+                  <label for="music">Music Competition - ₹300</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="dance" id="dance">
+                  <label for="dance">Dance Competition - ₹400</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="drama" id="drama">
+                  <label for="drama">Drama Competition - ₹350</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="literary" id="literary">
+                  <label for="literary">Literary Events - ₹200</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="arts" id="arts">
+                  <label for="arts">Fine Arts - ₹250</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="events" value="tech" id="tech">
+                  <label for="tech">Technical Events - ₹500</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="total-section">
+              <div class="total-row">
+                <span>Pass Cost:</span>
+                <span id="pass-cost">₹0</span>
+              </div>
+              <div class="total-row">
+                <span>Events Cost:</span>
+                <span id="events-cost">₹0</span>
+              </div>
+              <div class="total-row">
+                <span>Taxes (18% GST):</span>
+                <span id="tax-amount">₹0</span>
+              </div>
+              <div class="total-row final">
+                <span>Total Amount:</span>
+                <span id="total-amount">₹0</span>
+              </div>
+            </div>
+
+            <button type="button" class="submit-button" onclick="nextTab()">
+              Continue to Personal Details
+            </button>
+          </div>
+
+          <!-- Personal Details -->
+          <div class="form-content" id="details-content">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="college">College/University:</label>
+                <input type="text" id="college" name="college" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="year">Year of Study:</label>
+                <select id="year" name="year" class="form-select" required>
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                  <option value="postgrad">Post Graduate</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="course">Course/Program:</label>
+              <input type="text" id="course" name="course" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <textarea id="address" name="address" class="form-input" rows="3" required></textarea>
+            </div>
+
+            <div class="form-row">
+              <button type="button" class="submit-button" onclick="prevTab()">
+                Previous
+              </button>
+              <button type="button" class="submit-button" onclick="nextTab()">
+                Continue to Payment
+              </button>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="form-content" id="payment-content">
+            <div class="payment-section">
+              <h3>Payment Method</h3>
+              <div class="payment-methods">
+                <div class="payment-method" data-method="upi">
+                  <input type="radio" name="payment" value="upi" id="upi">
+                  <label for="upi">UPI Payment</label>
+                </div>
+                <div class="payment-method" data-method="card">
+                  <input type="radio" name="payment" value="card" id="card">
+                  <label for="card">Credit/Debit Card</label>
+                </div>
+                <div class="payment-method" data-method="netbanking">
+                  <input type="radio" name="payment" value="netbanking" id="netbanking">
+                  <label for="netbanking">Net Banking</label>
+                </div>
+              </div>
+
+              <div class="payment-details" id="upi-details">
+                <h4>UPI Payment</h4>
+                <div class="qr-container">
+                  <div class="qr-code">QR Code will appear here</div>
+                  <p>UPI ID: amigloria2025@paytm</p>
+                  <p>Scan QR code or use UPI ID to pay</p>
+                </div>
+              </div>
+
+              <div class="payment-details" id="card-details">
+                <h4>Card Payment</h4>
+                <div class="form-group">
+                  <label for="cardNumber">Card Number:</label>
+                  <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" class="form-input" placeholder="MM/YY">
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cardName">Cardholder Name:</label>
+                  <input type="text" id="cardName" name="cardName" class="form-input">
+                </div>
+              </div>
+
+              <div class="payment-details" id="netbanking-details">
+                <h4>Net Banking</h4>
+                <div class="form-group">
+                    <div class="form-group">
+                  <label for="bank">Select Bank:</label>
+                  <select id="bank" name="bank" class="form-select">
+                    <option value="">Choose your bank</option>
+                    <option value="sbi">State Bank of India</option>
+                    <option value="hdfc">HDFC Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="kotak">Kotak Mahindra Bank</option>
+                    <option value="pnb">Punjab National Bank</option>
+                    <option value="canara">Canara Bank</option>
+                    <option value="bob">Bank of Baroda</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="total-section">
+                <div class="total-row final">
+                  <span>Total Amount to Pay:</span>
+                  <span id="final-amount">₹0</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <button type="button" class="submit-button" onclick="prevTab()">
+                  Previous
+                </button>
+                <button type="submit" class="submit-button" id="pay-button">
+                  <span class="loading" style="display: none;"></span>
+                  Complete Payment
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>AMIGLORIA 2025</h3>
+            <p>The annual cultural festival of Amity University Bengaluru celebrating creativity, talent, and excellence.</p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook">📘</a>
+              <a href="#" aria-label="Instagram">📷</a>
+              <a href="#" aria-label="Twitter">🐦</a>
+              <a href="#" aria-label="YouTube">📺</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="#about">About Festival</a>
+            <a href="#events">Events</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#register">Register</a>
+            <a href="#">Gallery</a>
+            <a href="#">Past Events</a>
+          </div>
+          <div class="footer-section">
+            <h3>Event Info</h3>
+            <p>📅 February 14-16, 2025</p>
+            <p>📍 Amity University Bengaluru</p>
+            <p>📧 info@amigloria2025.com</p>
+            <p>📞 +91 98765 43210</p>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="#">Help Center</a>
+            <a href="#">Registration Help</a>
+            <a href="#">Payment Issues</a>
+            <a href="#">Contact Support</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 AMIGLORIA. All rights reserved. | Designed by Syed Amaan Tabraiz & Shaik Farhan| Collaboration with Amity University Bengaluru</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Global variables
+      let currentTab = 0;
+      let totalAmount = 0;
+      let passCost = 0;
+      let eventsCost = 0;
+      let taxAmount = 0;
+
+      // Tab navigation
+      function showTab(tabIndex) {
+        const tabs = document.querySelectorAll('.form-tab');
+        const contents = document.querySelectorAll('.form-content');
+        
+        tabs.forEach((tab, index) => {
+          if (index === tabIndex) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        contents.forEach((content, index) => {
+          if (index === tabIndex) {
+            content.classList.add('active');
+          } else {
+            content.classList.remove('active');
+          }
+        });
+
+        currentTab = tabIndex;
+      }
+
+      function nextTab() {
+        if (currentTab < 2) {
+          if (validateCurrentTab()) {
+            showTab(currentTab + 1);
+          }
+        }
+      }
+
+      function prevTab() {
+        if (currentTab > 0) {
+          showTab(currentTab - 1);
+        }
+      }
+
+      // Form validation
+      function validateCurrentTab() {
+        if (currentTab === 0) {
+          const passSelected = document.querySelector('input[name="pass"]:checked');
+          if (!passSelected) {
+            showNotification('Please select a pass type', 'error');
+            return false;
+          }
+          
+          if (passSelected.value === 'day') {
+            const daysSelected = document.querySelectorAll('input[name="days"]:checked');
+            if (daysSelected.length === 0) {
+              showNotification('Please select at least one day', 'error');
+              return false;
+            }
+          }
+          return true;
+        }
+        
+        if (currentTab === 1) {
+          const required = ['firstName', 'lastName', 'email', 'phone', 'college', 'year', 'course', 'address'];
+          for (let field of required) {
+            const element = document.getElementById(field);
+            if (!element.value.trim()) {
+              showNotification(`Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`, 'error');
+              element.focus();
+              return false;
+            }
+          }
+          
+          // Email validation
+          const email = document.getElementById('email').value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return false;
+          }
+          
+          // Phone validation
+          const phone = document.getElementById('phone').value;
+          const phoneRegex = /^[6-9]\d{9}$/;
+          if (!phoneRegex.test(phone)) {
+            showNotification('Please enter a valid 10-digit phone number', 'error');
+            return false;
+          }
+          
+          return true;
+        }
+        
+        return true;
+      }
+
+      // Pass selection handling
+      document.addEventListener('change', function(e) {
+        if (e.target.name === 'pass') {
+          const daySelection = document.getElementById('day-selection');
+          if (e.target.value === 'day') {
+            daySelection.style.display = 'block';
+          } else {
+            daySelection.style.display = 'none';
+            // Uncheck all day checkboxes
+            document.querySelectorAll('input[name="days"]').forEach(cb => cb.checked = false);
+          }
+          calculateTotal();
+        }
+        
+        if (e.target.name === 'days' || e.target.name === 'events') {
+          calculateTotal();
+        }
+        
+        if (e.target.name === 'payment') {
+          showPaymentDetails(e.target.value);
+        }
+      });
+
+      // Payment method selection
+      function showPaymentDetails(method) {
+        document.querySelectorAll('.payment-details').forEach(detail => {
+          detail.classList.remove('active');
+        });
+        document.getElementById(method + '-details').classList.add('active');
+      }
+
+      // Calculate total amount
+      function calculateTotal() {
+        passCost = 0;
+        eventsCost = 0;
+        
+        // Calculate pass cost
+        const selectedPass = document.querySelector('input[name="pass"]:checked');
+        if (selectedPass) {
+          if (selectedPass.value === 'basic') {
+            passCost = 1500;
+          } else if (selectedPass.value === 'premium') {
+            passCost = 2500;
+          } else if (selectedPass.value === 'day') {
+            const selectedDays = document.querySelectorAll('input[name="days"]:checked');
+            passCost = selectedDays.length * 800;
+          }
+        }
+        
+        // Calculate events cost
+        const eventPrices = {
+          'music': 300,
+          'dance': 400,
+          'drama': 350,
+          'literary': 200,
+          'arts': 250,
+          'tech': 500
+        };
+        
+        document.querySelectorAll('input[name="events"]:checked').forEach(event => {
+          eventsCost += eventPrices[event.value] || 0;
+        });
+        
+        // Calculate tax (18% GST)
+        const subtotal = passCost + eventsCost;
+        taxAmount = Math.round(subtotal * 0.18);
+        totalAmount = subtotal + taxAmount;
+        
+        // Update display
+        document.getElementById('pass-cost').textContent = '₹' + passCost;
+        document.getElementById('events-cost').textContent = '₹' + eventsCost;
+        document.getElementById('tax-amount').textContent = '₹' + taxAmount;
+        document.getElementById('total-amount').textContent = '₹' + totalAmount;
+        document.getElementById('final-amount').textContent = '₹' + totalAmount;
+      }
+
+      // Form submission
+      document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!validateCurrentTab()) {
+          return;
+        }
+        
+        const paymentMethod = document.querySelector('input[name="payment"]:checked');
+        if (!paymentMethod) {
+          showNotification('Please select a payment method', 'error');
+          return;
+        }
+        
+        // Show loading
+        const payButton = document.getElementById('pay-button');
+        const loading = payButton.querySelector('.loading');
+        loading.style.display = 'inline-block';
+        payButton.disabled = true;
+        
+        // Simulate payment processing
+        setTimeout(() => {
+          loading.style.display = 'none';
+          payButton.disabled = false;
+          showNotification('Registration successful! Check your email for confirmation.', 'success');
+          
+          // Reset form after successful submission
+          setTimeout(() => {
+            document.getElementById('registrationForm').reset();
+            showTab(0);
+            calculateTotal();
+          }, 2000);
+        }, 3000);
+      });
+
+      // Notification system
+      function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.classList.add('show');
+        }, 100);
+        
+        setTimeout(() => {
+          notification.classList.remove('show');
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 4000);
+      }
+
+      // Tab click handlers
+      document.querySelectorAll('.form-tab').forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          if (index <= currentTab || (index === 1 && validateCurrentTab())) {
+            showTab(index);
+          }
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(255, 255, 255, 0.95)';
+          header.style.backdropFilter = 'blur(10px)';
+        } else {
+          header.style.background = 'rgba(255, 255, 255, 0.9)';
+          header.style.backdropFilter = 'blur(5px)';
+        }
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animation elements
+      document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Card number formatting
+      document.getElementById('cardNumber')?.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') ?? value;
+        if (formattedValue !== value) {
+          e.target.value = formattedValue;
+        }
+      });
+
+      // Expiry date formatting
+      document.getElementById('expiryDate')?.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+      });
+
+      // CVV validation
+      document.getElementById('cvv')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
+      });
+
+      // Phone number validation
+      document.getElementById('phone')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 10);
+      });
+
+      // Initialize
+      calculateTotal();
+      
+      // Welcome animation
+      window.addEventListener('load', () => {
+        document.body.style.opacity = '1';
+      });
+    </script>
+  </body>
+</html>
